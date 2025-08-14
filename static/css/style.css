@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f6f8;
+}
+
+header {
+    background-color: #0d1735;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 50px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Container principal */
+.home-container {
+    text-align: center;
+    padding: 30px;
+}
+
+.home-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.home-description {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 50%;
+    max-width: 500px;
+    border-radius: 10px;
+    margin: 0 auto 30px auto;
+    display: block;
+    font-size: 16px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+}
+
+/* Botões principais */
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Formulários */
+form {
+    max-width: 500px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+}
+
+form input, form textarea, form button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+form button {
+    background-color: #0d1735;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #1b285a;
+}

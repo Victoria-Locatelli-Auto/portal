@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Cadastrar {{ tipo }}</h2>
+<form method="POST">
+    <input type="text" name="titulo" placeholder="Título" required>
+    <textarea name="descricao" placeholder="Descrição" required></textarea>
+    <input type="text" name="link" placeholder="Link do processo (opcional)">
+    <input type="text" name="icone" placeholder="URL da imagem/ícone (opcional)">
+    <button type="submit">Salvar</button>
+</form>
+{% endblock %}

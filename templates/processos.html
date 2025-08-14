@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="home-container">
+    <h1>Processos</h1>
+    {% if current_user.is_authenticated %}
+        <a href="{{ url_for('processos.cadastrar_processo') }}" class="card">➕ Cadastrar Processo</a>
+    {% endif %}
+
+    <div class="card-container">
+        {% for p in processos %}
+            <a href="{{ p.link if p.link else '#' }}" class="card" target="_blank">
+                {% if p.icone %}
+                    <img src="{{ p.icone }}" alt="{{ p.titulo }}" style="width:80px; margin-bottom:10px;">
+                {% endif %}
+                <h3>{{ p.titulo }}</h3>
+                <p>{{ p.descricao }}</p>
+            </a>
+        {% else %}
+            <p>Nenhum processo cadastrado.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

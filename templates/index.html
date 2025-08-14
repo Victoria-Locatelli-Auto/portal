@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="home-container">
+    <h1 class="home-title">Portal MCM</h1>
+    <p class="home-description">Colocar uma breve descrição do sistema</p>
+    
+    <input type="text" class="search-box" placeholder="O que você procura hoje?">
+    
+    <div class="card-container">
+        <a href="{{ url_for('processos.listar_processos') }}" class="card">
+            <img src="{{ url_for('static', filename='img/processos.png') }}" alt="Processos" style="width:80px; margin-bottom:10px;">
+            <br>Processos
+        </a>
+        <a href="{{ url_for('politicas.listar_politicas') }}" class="card">
+            <img src="{{ url_for('static', filename='img/politicas.png') }}" alt="Políticas" style="width:80px; margin-bottom:10px;">
+            <br>Políticas
+        </a>
+        <a href="{{ url_for('compliance.listar_compliance') }}" class="card">
+            <img src="{{ url_for('static', filename='img/compliance.png') }}" alt="Compliance" style="width:80px; margin-bottom:10px;">
+            <br>Compliance
+        </a>
+    </div>
+</div>
+{% endblock %}
