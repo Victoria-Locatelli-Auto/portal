@@ -16,11 +16,17 @@ def cadastrar_processo():
     if request.method == "POST":
         titulo = request.form["titulo"]
         descricao = request.form["descricao"]
-        link = request.form["link"]
-        icone = request.form["icone"]
+        icone_file = request.files.get("icone")  # <-- aqui pegamos o arquivo
 
-        novo = Processo(titulo=titulo, descricao=descricao, link=link, icone=icone)
+        if icone_file:
+            # Salvar o arquivo na pasta de uploads
+            caminho_icone = f"static/uploads/{icone_file.filename}"
+            icone_file.save(caminho_icone)
+        else:
+            caminho_icone = None  # ou um ícone padrão
+
+        novo = Processo(titulo=titulo, descricao=descricao, icone=caminho_icone)
         db.session.add(novo)
         db.session.commit()
         return redirect(url_for("processos.listar_processos"))
-    return render_template("cadastro.html", tipo="Processo")
+    return render_template("cadastrar_processo.html")
