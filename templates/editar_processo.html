@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container">
+    <h1>Editar Processo</h1>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="titulo">Título</label>
+            <input type="text" id="titulo" name="titulo" value="{{ processo.titulo }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="link">Link</label>
+            <input type="url" id="link" name="link" value="{{ processo.link }}">
+        </div>
+
+        <div class="form-group">
+            <label for="icone">Ícone (URL da imagem)</label>
+            <input type="text" id="icone" name="icone" value="{{ processo.icone }}">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-save">Salvar Alterações</button>
+            <a href="{{ url_for('processos.listar_processos') }}" class="btn-cancel">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
