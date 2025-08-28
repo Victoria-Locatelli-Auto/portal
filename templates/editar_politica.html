@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container">
+    <h1>Editar Política</h1>
+
+    <form action="{{ url_for('politicas.editar_politica', id=politica.id) }}" method="POST" enctype="multipart/form-data" class="form-grid">
+        
+        <div class="form-group">
+            <label for="titulo">Nome da política:</label>
+            <input type="text" id="titulo" name="titulo" value="{{ politica.titulo }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao">{{ politica.descricao }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="icone">Ícone:</label>
+            {% if politica.icone %}
+                <img src="{{ url_for('static', filename=politica.icone.replace('static/', '')) }}" alt="ícone" width="50">
+            {% endif %}
+            <input type="file" id="icone" name="icone" accept="image/png">
+        </div>
+
+        <div class="form-group">
+            <label for="link">Link:</label>
+            <input type="url" id="link" name="link" value="{{ politica.link }}" required>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-submit">Salvar Alterações</button>
+        </div>
+    </form>
+
+    <!-- Botão de desativar -->
+    <form action="{{ url_for('politicas.desativar_politica', id=politica.id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja desativar esta política?');">
+        <button type="submit" class="btn-danger">Desativar Política</button>
+    </form>
+</div>
+{% endblock %}
