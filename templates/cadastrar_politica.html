@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container">
+    <h1>Portal MCM</h1>
+    <p class="subtitle">Cadastrar Política</p>
+
+    <form action="{{ url_for('politicas.cadastrar_politica') }}" method="POST" enctype="multipart/form-data" class="form-grid">
+        
+        <!-- Nome da política -->
+        <div class="form-group">
+            <label for="titulo">Nome da política: <span class="required">*</span></label>
+            <input type="text" id="titulo" name="titulo" placeholder="Nome da política" required>
+        </div>
+
+        <!-- Descrição -->
+        <div class="form-group">
+            <label for="descricao">Breve descrição: <span class="required">*</span></label>
+            <textarea id="descricao" name="descricao" placeholder="Descrição da política" required></textarea>
+        </div>
+
+        <!-- Ícone -->
+        <div class="form-group">
+            <label for="icone">Ícone PNG:</label>
+            <input type="file" id="icone" name="icone" accept="image/png">
+        </div>
+
+        <!-- Link -->
+        <div class="form-group">
+            <label for="link">Link da política (Drive/Doc): <span class="required">*</span></label>
+            <input type="url" id="link" name="link" placeholder="Cole o link aqui" required>
+        </div>
+
+        <!-- Botão -->
+        <div class="form-actions">
+            <button type="submit" class="btn-submit">Cadastrar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

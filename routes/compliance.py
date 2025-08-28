@@ -10,7 +10,7 @@ def listar_compliance():
     compliance = Compliance.query.all()
     return render_template("compliance.html", compliance=compliance)
 
-@compliance_bp.route("/compliance/cadastrar", methods=["GET", "POST"])
+@compliance_bp.route("/compliance/cadastrar_compliance", methods=["GET", "POST"])
 @login_required
 def cadastrar_compliance():
     if request.method == "POST":
@@ -23,4 +23,4 @@ def cadastrar_compliance():
         db.session.add(novo)
         db.session.commit()
         return redirect(url_for("compliance.listar_compliance"))
-    return render_template("cadastro.html", tipo="Compliance")
+    return render_template("cadastrar_compliance.html", tipo="Compliance")

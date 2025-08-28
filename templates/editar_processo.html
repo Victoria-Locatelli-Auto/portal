@@ -3,26 +3,54 @@
 <div class="form-container">
     <h1>Editar Processo</h1>
 
-    <form method="POST">
+    <form action="{{ url_for('processos.editar_processo', id=processo.id) }}" method="POST" enctype="multipart/form-data" class="form-grid">
+        
         <div class="form-group">
-            <label for="titulo">Título</label>
+            <label for="titulo">Nome do processo:</label>
             <input type="text" id="titulo" name="titulo" value="{{ processo.titulo }}" required>
         </div>
 
         <div class="form-group">
-            <label for="link">Link</label>
-            <input type="url" id="link" name="link" value="{{ processo.link }}">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao">{{ processo.descricao }}</textarea>
         </div>
 
         <div class="form-group">
-            <label for="icone">Ícone (URL da imagem)</label>
-            <input type="text" id="icone" name="icone" value="{{ processo.icone }}">
+            <label for="icone">Ícone:</label>
+            {% if processo.icone %}
+                <img src="{{ url_for('static', filename=processo.icone.replace('static/', '')) }}" alt="ícone" width="50">
+            {% endif %}
+            <input type="file" id="icone" name="icone" accept="image/png">
+        </div>
+
+        <div class="form-group">
+            <label for="link_manual">Link Manual:</label>
+            <input type="url" id="link_manual" name="link_manual" value="{{ processo.link_manual }}">
+        </div>
+
+        <div class="form-group">
+            <label for="link_its">Link IT's:</label>
+            <input type="url" id="link_its" name="link_its" value="{{ processo.link_its }}">
+        </div>
+
+        <div class="form-group">
+            <label for="link_politicas">Link Políticas:</label>
+            <input type="url" id="link_politicas" name="link_politicas" value="{{ processo.link_politicas }}">
+        </div>
+
+        <div class="form-group">
+            <label for="outros_links">Outros Links:</label>
+            <input type="url" id="outros_links" name="outros_links" value="{{ processo.outros_links }}">
         </div>
 
         <div class="form-actions">
-            <button type="submit" class="btn-save">Salvar Alterações</button>
-            <a href="{{ url_for('processos.listar_processos') }}" class="btn-cancel">Cancelar</a>
+            <button type="submit" class="btn-submit">Salvar Alterações</button>
         </div>
+    </form>
+
+    <!-- Botão de desativar -->
+    <form action="{{ url_for('processos.desativar_processo', id=processo.id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja desativar este processo?');">
+        <button type="submit" class="btn-danger">Desativar Processo</button>
     </form>
 </div>
 {% endblock %}
