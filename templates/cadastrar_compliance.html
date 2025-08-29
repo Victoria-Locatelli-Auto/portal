@@ -1,39 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="form-container">
-    <h1>Portal MCM</h1>
-    <p class="subtitle">Cadastrar compliance</p>
+<div class="container mt-4">
+    <h2 class="mb-4">Cadastrar Compliance</h2>
 
-    <form action="{{ url_for('compliances.cadastrar_compliance') }}" method="POST" enctype="multipart/form-data" class="form-grid">
-        
-        <!-- Nome do processo -->
+    <form action="{{ url_for('compliance.cadastrar_compliance') }}" method="POST" enctype="multipart/form-data" class="form-grid">
+         <!-- Nome da política -->
         <div class="form-group">
-            <label for="titulo">Nome do compliance: <span class="required">*</span></label>
-            <input type="text" id="titulo" name="titulo" placeholder="Nome do compliance" required>
+            <label for="titulo">Nome do arquivo/site: <span class="required">*</span></label>
+            <input type="text" id="titulo" name="titulo" placeholder="Nome do arquivo/site:" required>
         </div>
 
-        <!-- Breve descrição -->
+        <!-- Descrição -->
         <div class="form-group">
-            <label for="descricao">Breve descrição do compliance: <span class="required">*</span></label>
-            <textarea id="descricao" name="descricao" placeholder="Descrição do compliance" required></textarea>
+            <label for="descricao">Breve descrição: <span class="required">*</span></label>
+            <textarea id="descricao" name="descricao" placeholder="Descrição da política" required></textarea>
         </div>
 
-        <!-- Ícone (upload) -->
+        <!-- Ícone -->
         <div class="form-group">
-            <label for="icone">Ícone do compliance PNG: <span class="required">*</span></label>
-            <input type="file" id="icone" name="icone" accept="image/png" required>
+            <label for="icone">Ícone PNG:</label>
+            <input type="file" id="icone" name="icone" accept="image/png">
         </div>
 
-        <!-- Link Manual -->
-        <div class="form-group">
-            <label for="link_compliance">Link do compliance: <span class="required">*</span></label>
-            <input type="url" id="link_compliance" name="link_compliance" placeholder="Link do compliance" required>
+        <!-- Link -->
+        <div class="form-group mb-3">
+            <label for="link_compliance">Link da Compliance (opcional)</label>
+            <input type="url" name="link_compliance" id="link_compliance" class="form-control" placeholder="https://exemplo.com/documento">
         </div>
 
-        <!-- Botão -->
-        <div class="form-actions">
-            <button type="submit" class="btn-submit">Cadastrar</button>
-        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a href="{{ url_for('compliance.listar_compliance') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 {% endblock %}

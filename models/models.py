@@ -1,5 +1,6 @@
 from models.database import db
 from flask_login import UserMixin
+from datetime import datetime
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -17,7 +18,6 @@ class Processo(db.Model):
     icone = db.Column(db.String(255))
     ativo = db.Column(db.Boolean, default=True)
 
-
 class Politica(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     titulo = db.Column(db.String(100), nullable=False)
@@ -33,3 +33,11 @@ class Compliance(db.Model):
     link = db.Column(db.String(255))
     link_denuncias = db.Column(db.String(255))
     icone = db.Column(db.String(255))
+    ativa = db.Column(db.Boolean, default=True)
+
+class Aviso(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    titulo = db.Column(db.String(150), nullable=False)
+    descricao = db.Column(db.Text, nullable=False)
+    data = db.Column(db.Date, nullable=False)
+    criado_em = db.Column(db.DateTime, default=datetime.utcnow)

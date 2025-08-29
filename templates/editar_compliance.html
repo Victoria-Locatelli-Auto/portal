@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Editar Compliance</h2>
+
+    <form action="{{ url_for('compliance.editar_compliance', id=compliance.id) }}" method="POST" enctype="multipart/form-data" class="form-grid">
+        <div class="form-group mb-3">
+            <label for="titulo">Título</label>
+            <input type="text" name="titulo" id="titulo" class="form-control" value="{{ compliance.titulo }}" required>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="descricao">Descrição</label>
+            <textarea name="descricao" id="descricao" class="form-control" rows="4" required>{{ compliance.descricao }}</textarea>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="responsavel">Responsável</label>
+            <input type="text" name="responsavel" id="responsavel" class="form-control" value="{{ compliance.responsavel }}" required>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="arquivo">Substituir anexo (opcional)</label>
+            <input type="file" name="arquivo" id="arquivo" class="form-control">
+            {% if compliance.arquivo %}
+                <p class="mt-2">Arquivo atual: 
+                    <a href="{{ url_for('static', filename='uploads/' ~ compliance.arquivo) }}" target="_blank">
+                        {{ compliance.arquivo }}
+                    </a>
+                </p>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-success">Salvar Alterações</button>
+        <a href="{{ url_for('compliance.listar_compliance') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
