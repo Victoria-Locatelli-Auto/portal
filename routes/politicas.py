@@ -17,7 +17,6 @@ def listar_politicas():
     politicas = Politica.query.filter_by(ativa=True).all()
     return render_template("politicas.html", politicas=politicas)
 
-
 # Cadastrar nova política
 @politicas_bp.route("/politicas/cadastrar_politicas", methods=["GET", "POST"])
 @login_required

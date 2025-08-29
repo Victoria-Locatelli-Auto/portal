@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, current_app
+from flask import Blueprint, render_template, request, redirect, url_for, current_app, flash
 from flask_login import login_required
 from models.database import db
 from models.models import Compliance
@@ -39,3 +39,20 @@ def cadastrar_compliance():
         db.session.commit()
         return redirect(url_for("compliance.listar_compliance"))
     return render_template("cadastrar_compliance.html", tipo="Compliance")
+
+@compliance_bp.route('/compliance/editar/<int:id>', methods=['GET', 'POST'])
+def editar_compliance(id):
+    compliance = Compliance.query.get_or_404(id)
+    if request.method == 'POST':
+        compliance.nome = request.form['nome']  # ajuste os campos conforme seu model
+        db.session.commit()
+        return redirect(url_for('compliance.listar_compliance'))
+    return render_template("editar_compliance.html", compliance=compliance)
+
+@compliance_bp.route("/compliance/desativar/<int:id>", methods=["POST"])
+def desativar_compliance(id):
+    compliance = Compliance.query.get_or_404(id)
+    compliance.ativo = False  # exemplo: campo que marca ativo/desativado
+    db.session.commit()
+    flash("Compliance desativado com sucesso!", "success")
+    return redirect(url_for("compliance.listar_compliance"))

@@ -12,7 +12,7 @@
                 <!-- Link do processo -->
                 <a href="{{ url_for('processos.detalhes_processo', id=p.id) }}" target="_blank" class="card-link">
                     {% if p.icone %}
-                        <img src="{{ url_for('static', filename='uploads/' + p.icone) }}" style="width:80px; margin-bottom:10px;">
+                        <img src="{{ p.icone }}" alt="{{ p.titulo }}" style="width:80px; margin-bottom:10px;">
                     <a href="{{ url_for('processos.detalhes_processo', id=p.id) }}"> {{ p.titulo }}</a>
                     {% endif %}
                 </a>

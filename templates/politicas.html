@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="home-container">
-    <h1>Políticas</h1>
-    {% if current_user.is_authenticated %}
+    <h1>Políticas </h1>
+    
+    <div class="card-cadastro">
+        {% if current_user.is_authenticated %}
         <a href="{{ url_for('politicas.cadastrar_politica') }}" class="card">➕ Cadastrar Política</a>
-    {% endif %}
+        {% endif %}
+    </div>
 
     <div class="card-container">
+        
+
         {% for p in politicas %}
             <div class="card">
                 <!-- Link da política -->

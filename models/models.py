@@ -1,6 +1,5 @@
 from models.database import db
 from flask_login import UserMixin
-from datetime import datetime
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -40,4 +39,3 @@ class Aviso(db.Model):
     titulo = db.Column(db.String(150), nullable=False)
     descricao = db.Column(db.Text, nullable=False)
     data = db.Column(db.Date, nullable=False)
-    criado_em = db.Column(db.DateTime, default=datetime.utcnow)

@@ -15,6 +15,12 @@
                 <h3>{{ p.titulo }}</h3>
                 <p>{{ p.descricao }}</p>
             </a>
+             <!-- Botão de edição -->
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('compliance.editar_compliance', id=p.id) }}" class="edit-btn" title="Editar">
+                    <i class="fas fa-pencil-alt"></i>
+                </a>
+            {% endif %}
         
         {% else %}
             <p>Nenhum compliance cadastrado.</p>
