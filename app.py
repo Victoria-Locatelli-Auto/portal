@@ -7,7 +7,6 @@ from routes.auth import auth_bp
 from routes.processos import processos_bp
 from routes.politicas import politicas_bp
 from routes.compliance import compliance_bp
-from routes.avisos import avisos_bp
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "chave-secreta"
@@ -32,7 +31,7 @@ app.register_blueprint(auth_bp)
 app.register_blueprint(processos_bp)
 app.register_blueprint(politicas_bp)
 app.register_blueprint(compliance_bp)
-app.register_blueprint(avisos_bp)
+
 
 if __name__ == "__main__":
     with app.app_context():

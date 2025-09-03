@@ -50,7 +50,7 @@
 
     <!-- Botão de desativar -->
     <form action="{{ url_for('processos.desativar_processo', id=processo.id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja desativar este processo?');">
-        <button type="submit" class="btn-danger">Desativar Processo</button>
+        <button type="submit" class="btn-danger">Excluir Processo</button>
     </form>
 </div>
 {% endblock %}

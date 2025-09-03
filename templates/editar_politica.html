@@ -35,7 +35,7 @@
 
     <!-- Botão de desativar -->
     <form action="{{ url_for('politicas.desativar_politica', id=politica.id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja desativar esta política?');">
-        <button type="submit" class="btn-danger">Desativar Política</button>
+        <button type="submit" class="btn-danger">Excluir Política</button>
     </form>
 </div>
 {% endblock %}

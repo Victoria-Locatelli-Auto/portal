@@ -31,8 +31,8 @@ def cadastrar_processo():
             filename = secure_filename(icone_file.filename)
             upload_folder = os.path.join(current_app.root_path, "static/uploads")
             os.makedirs(upload_folder, exist_ok=True)
-            icone_path = os.path.join("static/uploads", filename)
             icone_file.save(os.path.join(upload_folder, filename))
+            icone_path = f"uploads/{filename}"
 
         novo = Processo(
             titulo=titulo,

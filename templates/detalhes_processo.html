@@ -2,89 +2,55 @@
 {% block content %}
 
 <div class="container text-center mt-5">
-    <!-- Título -->
-    <h1 class="fw-bold">Portal MCM</h1>
-    <h3 class="card-title fw-bold mb-3">{{ processo.titulo }}</h3>
-    <p class="card-text">{{ processo.descricao }}</p>
+    <h1 class="card-title fw-bold mb-3">{{ processo.titulo }}</h1>
+    <h4 class="card-text">{{ processo.descricao }} </h4>
 
-    <!-- Card do Processo -->
-    <div class="card shadow-sm mx-auto mt-4" style="max-width: 700px; border-radius: 15px;">
-        <div class="card-body">
-            
-            <!-- Links -->
-            <div class="row mt-4">
-                {% if processo.link_its %}
-                <div class="col-md-4 mb-3">
-                    <a href="{{ processo.link_its }}" target="_blank" class="btn btn-light w-100 py-3 border shadow-sm">
-                        <img src="{{ url_for('static', filename='img/icon_it.png') }}" width="40" class="mb-2"><br>
-                        Instruções de Trabalho
-                    </a>
-                </div>
-                {% endif %}
-        </div>
-    </div>
-</div>
-
-<div class="container text-center mt-5">
-    <!-- Card do Processo -->
-    <div class="card shadow-sm mx-auto mt-4" style="max-width: 700px; border-radius: 15px;">
-        <div class="card-body">
-            
-            <!-- Links -->
-            <div class="row mt-4">
-                {% if processo.link_manual %}
-                <div class="col-md-4 mb-3">
-                    <a href="{{ processo.link_manual }}" target="_blank" class="btn btn-light w-100 py-3 border shadow-sm">
-                        <img src="{{ url_for('static', filename='img/icon_manual.png') }}" width="40" class="mb-2"><br>
-                        Manual do Processo
-                    </a>
-                </div>
-                {% endif %}
-        </div>
-    </div>
-</div>
-
-<div class="container text-center mt-5">
-    <!-- Card do Processo -->
-    <div class="card shadow-sm mx-auto mt-4" style="max-width: 700px; border-radius: 15px;">
-        <div class="card-body">
-            
-            <!-- Links -->
-            <div class="row mt-4">
-                {% if processo.link_politicas %}
-                <div class="col-md-4 mb-3">
-                    <a href="{{ processo.link_politicas }}" target="_blank" class="btn btn-light w-100 py-3 border shadow-sm">
-                        <img src="{{ url_for('static', filename='img/politicas.png') }}" width="40" class="mb-2"><br>
-                        Políticas
-                    </a>
-                </div>
-                {% endif %}
-
-        </div>
-    </div>
-</div>
-
-<div class="container text-center mt-5">
-    <!-- Card do Processo -->
-    <div class="card shadow-sm mx-auto mt-4" style="max-width: 700px; border-radius: 15px;">
-        <div class="card-body">
-            
-            <!-- Links -->
-            <div class="row mt-4">
-                {% if processo.outros_links %}
-            <div class="mt-4">
-                <h5 class="fw-bold">Outros Links</h5>
-                <ul class="list-unstyled">
-                    {% for link in processo.outros_links.split(",") %}
-                    <li><a href="{{ link.strip() }}" target="_blank" class="text-decoration-none text-primary">{{ link.strip() }}</a></li>
-                    {% endfor %}
-                </ul>
+    <div class="cards-container">
+        {% if processo.link_its %}
+        <div class="card shadow-sm" style="width: 200px; border-radius: 15px;">
+            <div class="card-body">
+                <a href="{{ processo.link_its }}" class="btn btn-light w-100 py-3 border shadow-sm">
+                    <img src="{{ url_for('static', filename='img/icon_it.png') }}" width="40" class="mb-2"><br>
+                    Instruções de Trabalho
+                </a>
             </div>
-            {% endif %}
-
         </div>
+        {% endif %}
+
+        {% if processo.link_manual %}
+        <div class="card shadow-sm" style="width: 200px; border-radius: 15px;">
+            <div class="card-body">
+                <a href="{{ processo.link_manual }}" class="btn btn-light w-100 py-3 border shadow-sm">
+                    <img src="{{ url_for('static', filename='img/icon_manual.png') }}" width="40" class="mb-2"><br>
+                    Manual do Processo
+                </a>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if processo.link_politicas %}
+        <div class="card shadow-sm" style="width: 200px; border-radius: 15px;">
+            <div class="card-body">
+                <a href="{{ processo.link_politicas }}" class="btn btn-light w-100 py-3 border shadow-sm">
+                    <img src="{{ url_for('static', filename='img/politicas.png') }}" width="40" class="mb-2"><br>
+                    Políticas
+                </a>
+            </div>
+        </div>
+        {% endif %}
+
+       
+        {% if processo.outros_links %}
+        <div class="card shadow-sm" style="width: 200px; border-radius: 15px;">
+            <div class="card-body">
+                <a href="{{ processo.outros_links.strip() }}" class="btn btn-light w-100 py-3 border shadow-sm">
+                    <img src="{{ url_for('static', filename='img/outros.png') }}" width="40" class="mb-2"><br>
+                    Outros Links
+                </a>
+            </div>
+        </div>
+        {% endif %}
+
     </div>
 </div>
-
-
 {% endblock %}

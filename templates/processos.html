@@ -2,6 +2,7 @@
 {% block content %}
 <div class="home-container">
     <h1>Processos</h1>
+    
     {% if current_user.is_authenticated %}
         <a href="{{ url_for('processos.cadastrar_processo') }}" class="card">➕ Cadastrar Processo</a>
     {% endif %}
@@ -10,9 +11,9 @@
         {% for p in processos %}
             <div class="card">
                 <!-- Link do processo -->
-                <a href="{{ url_for('processos.detalhes_processo', id=p.id) }}" target="_blank" class="card-link">
+                <a href="{{ url_for('processos.detalhes_processo', id=p.id) }}" class="btn btn-light w-100 py-3 border shadow-sm">
                     {% if p.icone %}
-                        <img src="{{ p.icone }}" alt="{{ p.titulo }}" style="width:80px; margin-bottom:10px;">
+                        <img src="{{ url_for('static', filename=p.icone) }}" alt="Processos" style="width:80px;">
                     <a href="{{ url_for('processos.detalhes_processo', id=p.id) }}"> {{ p.titulo }}</a>
                     {% endif %}
                 </a>

@@ -1,27 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="home-container">
-    <h1>Compliance</h1>
-    {% if current_user.is_authenticated %}
-        <a href="{{ url_for('compliance.cadastrar_compliance') }}" class="card">➕ Cadastrar Compliance</a>
-    {% endif %}
+    <h1>Compliance </h1>
 
+    {% if current_user.is_authenticated %}
+        <a href="{{ url_for('compliance.cadastrar_compliance') }}" class="card">➕ Cadastrar compliance</a>
+    {% endif %}
+    
     <div class="card-container">
         {% for p in compliance %}
-            <a href="{{ p.link if p.link else '#' }}" class="card" target="_blank">
-                {% if p.icone %}
-                    <img src="{{ p.icone }}" alt="{{ p.titulo }}" style="width:80px; margin-bottom:10px;">
-                {% endif %}
-                <h3>{{ p.titulo }}</h3>
-                <p>{{ p.descricao }}</p>
-            </a>
-             <!-- Botão de edição -->
-            {% if current_user.is_authenticated %}
-                <a href="{{ url_for('compliance.editar_compliance', id=p.id) }}" class="edit-btn" title="Editar">
-                    <i class="fas fa-pencil-alt"></i>
+            <div class="card">
+                <!-- Link da compliance -->
+                <a href="{{ p.link if p.link else '#' }}" target="_blank" class="card-link">
+                    {% if p.icone %}
+                        <img src="{{ p.icone }}" alt="{{ p.titulo }}" style="width:80px; margin-bottom:10px;">
+                    {% endif %}
+                    <h3>{{ p.titulo }}</h3>
                 </a>
-            {% endif %}
-        
+
+                <!-- Botão de edição -->
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('compliance.editar_compliance', id=p.id) }}" class="edit-btn" title="Editar">
+                        <i class="fas fa-pencil-alt"></i>
+                    </a>
+                {% endif %}
+            </div>
         {% else %}
             <p>Nenhum compliance cadastrado.</p>
         {% endfor %}
