@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="avisos-container">
+    <h1 class="avisos-titulo">Avisos</h1>
+
+    <!-- Botão cadastrar aviso (somente admin logado) -->
+    {% if current_user.is_authenticated %}
+        <div class="acoes">
+            <a href="{{ url_for('avisos.cadastrar_aviso') }}" class="card">➕ Cadastrar compliance</a>
+        </div>
+    {% endif %}
+
+    <!-- Lista de avisos -->
+    {% for aviso in avisos %}
+        <div class="aviso-item">
+            <h3 class="aviso-titulo">{{ aviso.titulo }}</h3>
+            <span class="data">{{ aviso.data.strftime('%d/%m/%Y') }}</span>
+
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('avisos.excluir_aviso', id=aviso.id) }}" class="btn-excluir">Excluir</a>
+            {% endif %}
+        </div>
+    {% else %}
+        <p>Nenhum aviso cadastrado.</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container">
+    <h1>Portal MCM</h1>
+    <p class="subtitle">Cadastrar Processo</p>
+
+    <form action="{{ url_for('processos.cadastrar_processo') }}" method="POST" enctype="multipart/form-data" class="form-grid">
+        
+        <!-- Nome do processo -->
+        <div class="form-group">
+            <label for="titulo">Nome do processo: <span class="required">*</span></label>
+            <input type="text" id="titulo" name="titulo" placeholder="Nome do processo" required>
+        </div>
+
+        <!-- Breve descrição -->
+        <div class="form-group">
+            <label for="descricao">Breve descrição do processo: <span class="required">*</span></label>
+            <textarea id="descricao" name="descricao" placeholder="Descrição do processo" required></textarea>
+        </div>
+
+        <!-- Ícone -->
+        <div class="form-group">
+            <label for="icone">Ícone PNG:</label>
+            <input type="file" id="icone" name="icone" accept="image/png">
+        </div>
+
+        <!-- Link Manual -->
+        <div class="form-group">
+            <label for="link_manual">Link do Drive Manual: <span class="required">*</span></label>
+            <input type="url" id="link_manual" name="link_manual" placeholder="Link do Drive Manual" required>
+        </div>
+
+        <!-- Link ITs -->
+        <div class="form-group">
+            <label for="link_its">Link do Drive IT's: <span class="required">*</span></label>
+            <input type="url" id="link_its" name="link_its" placeholder="Link do Drive IT's" required>
+        </div>
+
+        <!-- Link Políticas -->
+        <div class="form-group">
+            <label for="link_politicas">Link do Drive Políticas:</label>
+            <input type="url" id="link_politicas" name="link_politicas" placeholder="Link do Drive Políticas">
+        </div>
+
+        <!-- Outros Links -->
+        <div class="form-group">
+            <label for="outros_links">Outros links do Drive:</label>
+            <input type="url" id="outros_links" name="outros_links" placeholder="Outros links do Drive">
+        </div>
+
+        <!-- Botões -->
+        <div class="form-group" style="grid-column: span 2; text-align: center;">
+            <button type="submit" class="btn-submit">Cadastrar</button>
+            <a href="{{ url_for('processos.listar_processos') }}" class="btn-cancel">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

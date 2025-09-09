@@ -7,6 +7,7 @@ from routes.auth import auth_bp
 from routes.processos import processos_bp
 from routes.politicas import politicas_bp
 from routes.compliance import compliance_bp
+from routes.avisos import avisos_bp
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "chave-secreta"
@@ -24,21 +25,23 @@ def load_user(user_id):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    from models.models import Aviso
+    avisos = Aviso.query.order_by(Aviso.data.desc()).limit(3).all()
+    return render_template("index.html", avisos=avisos)
 
 # Registrar blueprints
 app.register_blueprint(auth_bp)
 app.register_blueprint(processos_bp)
 app.register_blueprint(politicas_bp)
 app.register_blueprint(compliance_bp)
+app.register_blueprint(avisos_bp)
+
 
 
 if __name__ == "__main__":
     with app.app_context():
-        # Cria todas as tabelas que ainda não existem
         db.create_all()
 
-        # Cria o usuário admin se não existir
         from werkzeug.security import generate_password_hash
 
         if not User.query.filter_by(username="admin").first():
@@ -46,8 +49,5 @@ if __name__ == "__main__":
             db.session.add(user)
             db.session.commit()
             print("Usuário admin criado!")
-    app.run(debug=True)
 
-# Rodar o servidor acessível por IP
-if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8050, debug=True)

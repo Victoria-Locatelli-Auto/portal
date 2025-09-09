@@ -187,45 +187,55 @@ nav a:hover {
 }
 
 /* ==========================
-   FORMULÁRIOS
+   FORMULÁRIOS (modelo 1 coluna)
 ========================== */
 form, .form-container {
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 20px;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    justify-content: center;
 }
 
 form h1, .form-container h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: #0b2447;
+    font-size: 1.8rem;
 }
 
 .subtitle {
     text-align: center;
     margin-bottom: 2rem;
     color: #555;
+    font-size: 1rem;
 }
 
+/* Grid em 1 coluna */
 .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 400px; /* Mantém os campos com largura limitada */
     margin-bottom: 15px;
+    align-items: center;
+    text-align: right;
 }
 
 .form-group label {
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-weight: 600;
+    margin-bottom: 6px;
     color: #333;
+    font-size: 0.95rem;
 }
 
 .form-group .required {
@@ -234,10 +244,16 @@ form h1, .form-container h1 {
 
 input, textarea, select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 12px;
+    border: 1px solid #cfd8dc;
     border-radius: 8px;
     font-size: 14px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #0b2447;
 }
 
 textarea {
@@ -245,41 +261,46 @@ textarea {
     min-height: 80px;
 }
 
+/* Campo com ícone (ex: link) */
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon input {
+    padding-right: 35px;
+}
+
+.input-with-icon i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #0b2447;
+    font-size: 16px;
+}
+
 /* ==========================
    BOTÕES
 ========================== */
-.btn, form button, .btn-save, .btn-cancel, .btn-submit {
+.btn-submit {
     display: inline-block;
-    padding: 10px 20px;
+    width: 100%;
+    padding: 12px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
     text-align: center;
     transition: 0.3s;
     border: none;
-    
-    
-}
-
-.btn-save, .btn-submit, form button {
     background: #0b2447;
     color: #fff;
-    
+    font-size: 15px;
 }
 
-.btn-save:hover, .btn-submit:hover, form button:hover {
+.btn-submit:hover {
     background: #1e90ff;
-    
 }
 
-.btn-cancel {
-    background: #ccc;
-    color: #000;
-}
-
-.btn-cancel:hover {
-    background: #999;
-}
 
 .links-processo .btn {
     border: 1px solid #333;
@@ -307,7 +328,7 @@ footer {
     background-color: #0d1735;
     color: white;
     text-align: center;
-    padding: 10px 0;
+    padding: 5px 0;
 }
 
 /* ===== Estilização da seção de Avisos ===== */
@@ -361,3 +382,65 @@ footer {
     white-space: nowrap;
 }
 
+/* ===== Estilo da tela de login ===== */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.login-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+    width: 350px;
+    text-align: center;
+}
+
+.login-card h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+}
+
+.btn-login {
+    background: #0d1735;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.btn-login:hover {
+    background: #0056b3;
+}

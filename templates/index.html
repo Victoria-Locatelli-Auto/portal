@@ -3,13 +3,20 @@
 <main>
     <div class="home-container">
         <h1 class="home-title">Portal MCM</h1>
-        <p class="home-description">Colocar uma breve descrição do sistema</p>
+        <p class="home-description">Um espaço para colaboradores acessarem, de forma rápida e prática, informações, solicitações, </p>
+        <p class="home-description"></p>documentos e ferramentas que facilitam o dia a dia de trabalho.</p>
 
         <div class="card-container">
-            <a href="avisos.html" class="card">
+            <a href="{{ url_for('avisos.lista_avisos') }}" class="card">
                 <img src="{{ url_for('static', filename='img/icon_avisos.png') }}" alt="Avisos" style="width:80px;">
                 <br>Avisos
             </a>
+
+            <a href="http://172.26.12.53/suporte/mcm/open.php" class="card">
+                <img src="{{ url_for('static', filename='img/chamados.png') }}" alt="Chamados" style="width:80px;">
+                <br>Chamados
+            </a>
+
 
             <a href="{{ url_for('compliance.listar_compliance') }}" class="card">
                 <img src="{{ url_for('static', filename='img/compliance.png') }}" alt="Compliance" style="width:80px;">
@@ -36,19 +43,18 @@
         <!-- Seção de Avisos -->
         <section class="avisos">
             <h2 class="avisos-titulo">Avisos</h2>
-            <div class="aviso-item">
-                <p>Publicação processo de Adm da Casa</p>
-                <span class="data">25/08/2025</span>
-            </div>
-            <div class="aviso-item">
-                <p>Publicação processo de Garantia.</p>
-                <span class="data">08/07/2025</span>
-            </div>
-            <div class="aviso-item">
-                <p>Publicação processo de Estoque</p>
-                <span class="data">30/06/2025</span>
-            </div>
+            {% for aviso in avisos %}
+                <div class="aviso-item">
+                    <p>{{ aviso.titulo }}</p>
+                    <span class="data">{{ aviso.data.strftime('%d/%m/%Y') }}</span>
+                </div>
+            {% else %}
+                <p>Nenhum aviso publicado.</p>
+            {% endfor %}
+            <a href="{{ url_for('avisos.lista_avisos') }}" class="btn-ver-todos">Ver todos</a>
         </section>
+
+
     </div>
 </main>
 {% endblock %}

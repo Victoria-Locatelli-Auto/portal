@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container">
+    <h2>Cadastrar Aviso</h2>
+    <form method="POST" class="form-grid">
+        <div class="form-group">
+            <label for="titulo">Aviso:</label>
+            <input type="text" id="titulo" name="titulo" required>
+        </div>
+        <button type="submit" class="btn-submit">Cadastrar</button>
+    </form>
+</div>
+{% endblock %}
+
+
+
