@@ -6,7 +6,7 @@
     <!-- Botão cadastrar aviso (somente admin logado) -->
     {% if current_user.is_authenticated %}
         <div class="acoes">
-            <a href="{{ url_for('avisos.cadastrar_aviso') }}" class="card">➕ Cadastrar compliance</a>
+            <a href="{{ url_for('avisos.cadastrar_aviso') }}" class="card">➕ Cadastrar aviso</a>
         </div>
     {% endif %}
 
@@ -20,6 +20,7 @@
                 <a href="{{ url_for('avisos.excluir_aviso', id=aviso.id) }}" class="btn-excluir">Excluir</a>
             {% endif %}
         </div>
+
     {% else %}
         <p>Nenhum aviso cadastrado.</p>
     {% endfor %}

@@ -17,9 +17,8 @@ def lista_avisos():
 def cadastrar_aviso():
     if request.method == "POST":
         titulo = request.form["titulo"]
-        descricao = request.form["descricao"]
 
-        aviso = Aviso(titulo=titulo, descricao=descricao)
+        aviso = Aviso(titulo=titulo)
         db.session.add(aviso)
         db.session.commit()
         flash("Aviso cadastrado com sucesso!", "success")

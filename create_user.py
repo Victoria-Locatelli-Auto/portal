@@ -3,8 +3,8 @@ from app import app, db
 from models.models import User
 
 with app.app_context():
-    username = "teste"
-    password = "teste"
+    username = "Admin_PPGC"
+    password = "coxinha2025"
 
     hashed_password = generate_password_hash(password)
     user = User(username=username, password=hashed_password)

@@ -444,3 +444,24 @@ footer {
 .btn-login:hover {
     background: #0056b3;
 }
+
+/* ===== Avisos ===== */
+
+.aviso-item {
+    display: flex;           /* Faz os elementos ficarem na mesma linha */
+    justify-content: space-between; /* Coloca um elemento na esquerda e outro na direita */
+    align-items: center;     /* Centraliza verticalmente */
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.aviso-titulo {
+    margin: 0; /* Remove margem padrão */
+    text-align: left; /* Garante alinhamento à esquerda */
+}
+
+.data {
+    text-align: right; /* Garante que fique à direita */
+    color: #666;
+    font-size: 0.9em;
+}

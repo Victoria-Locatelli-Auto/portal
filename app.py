@@ -39,15 +39,4 @@ app.register_blueprint(avisos_bp)
 
 
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
-
-        from werkzeug.security import generate_password_hash
-
-        if not User.query.filter_by(username="admin").first():
-            user = User(username="admin", password=generate_password_hash("1234"))
-            db.session.add(user)
-            db.session.commit()
-            print("Usuário admin criado!")
-
     app.run(host="0.0.0.0", port=8050, debug=True)
